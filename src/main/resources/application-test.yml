@@ -1,0 +1,23 @@
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    ip-address: true
+    # 客户端发送心跳的频率，默认值为30s
+    lease-renewal-interval-in-seconds: 10
+    # 触发自我保护的心跳数比例阈值，默认值为0.85
+    renewal-percent-threshold: 0.3
+    # 心跳阈值重新计算的周期，默认值为15分钟
+    renewal-threshold-update-interval-ms: 60000
+  server:
+    enable-self-preservation: false
+spring:
+  security:
+    user:
+      name: admin
+      password: sanhaoadmin
